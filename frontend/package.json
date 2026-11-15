@@ -138,5 +138,10 @@
         "vitest": "^4.1.9",
         "ws": "^8.21.1"
     },
-    "packageManager": "pnpm@11.8.0"
+    "packageManager": "pnpm@11.8.0",
+    "pnpm": {
+        "overrides": {
+            "minimatch@<11.0.1": "11.0.1"
+        }
+    }
 }
