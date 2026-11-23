@@ -63,7 +63,7 @@ Set the private IP address that will be used throughout this setup, the metrics 
 ```bash
 export PRIVATE_IP=192.168.10.10  # Replace with your worker node IP
 export METRICS_IP=127.0.0.1     # Bind address for metrics ports 8080 / 9100 / 9323 / 9324
-export GUIDE_URL=https://raw.githubusercontent.com/vxcontrol/pentagi/main/examples/guides/worker_node
+export GUIDE_URL=https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/examples/guides/worker_node
 ```
 
 `METRICS_IP` defaults to `127.0.0.1` so Prometheus metrics (Docker daemon, dind, cAdvisor, node-exporter) stay local to the worker node. Set it to `${PRIVATE_IP}` only if a remote scraper must reach ports `8080`, `9100`, `9323` / `9324`.
