@@ -42,15 +42,15 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           package_json_file: frontend/package.json
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: frontend/.nvmrc
           cache: "pnpm"
@@ -70,7 +70,7 @@ jobs:
 
       - name: Upload results.json
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: e2e-results
           path: frontend/e2e/test-results/results.json
@@ -79,7 +79,7 @@ jobs:
 
       - name: Upload report and traces
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: e2e-report
           path: frontend/e2e/test-results
@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload trend
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: e2e-trend
           path: frontend/e2e/test-results/trend.jsonl
@@ -113,7 +113,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.61.1-noble
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
 
       # Compare the container's own Playwright build to @playwright/test rather than a
       # hardcoded literal, so bumping the package without re-tagging the image (or vice
@@ -131,7 +131,7 @@ jobs:
           fi
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           package_json_file: frontend/package.json
 
@@ -139,7 +139,7 @@ jobs:
       # Playwright container ships — local baselines are built under .nvmrc
       # and pixel-stability assumes identically built bundles.
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: frontend/.nvmrc
 
@@ -175,7 +175,7 @@ jobs:
       # Its presence is the precise "snapshots differ" signal the report keys the advisory on.
       - name: Upload diffs
         if: always() && steps.diffs.outputs.found == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: e2e-visual-diffs
           path: frontend/e2e/test-results
@@ -192,15 +192,15 @@ jobs:
     timeout-minutes: 40
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
         with:
           package_json_file: frontend/package.json
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: frontend/.nvmrc
           cache: "pnpm"
@@ -219,7 +219,7 @@ jobs:
 
       - name: Upload report and traces
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: e2e-local-report
           path: frontend/e2e/test-results
