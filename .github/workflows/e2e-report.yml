@@ -30,7 +30,7 @@ jobs:
       - name: Download results
         id: results
         continue-on-error: true
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: e2e-results
           path: results
@@ -42,7 +42,7 @@ jobs:
       - name: Download visual diffs
         id: visualdiffs
         continue-on-error: true
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: e2e-visual-diffs
           path: visual-diffs
@@ -50,7 +50,7 @@ jobs:
           github-token: ${{ github.token }}
 
       - name: Post sticky comment
-        uses: actions/github-script@v7
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b
         with:
           script: |
             const fs = require('fs');
