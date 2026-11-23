@@ -739,15 +739,15 @@ mkdir pentagi && cd pentagi
 2. Copy `.env.example` to `.env` or download it:
 
 ```bash
-curl -o .env https://raw.githubusercontent.com/vxcontrol/pentagi/master/.env.example
+curl -o .env https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/.env.example
 ```
 
 3. Touch examples files (`example.custom.provider.yml`, `example.ollama.provider.yml`, `example.bedrock.provider.yml`) or download it. `docker-compose.yml` mounts each of them into the container, and Docker creates a directory in place of a mount source that does not exist:
 
 ```bash
-curl -o example.custom.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/master/examples/configs/custom-openai.provider.yml
-curl -o example.ollama.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/master/examples/configs/ollama-llama318b.provider.yml
-curl -o example.bedrock.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/master/examples/configs/bedrock.provider.yml
+curl -o example.custom.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/examples/configs/custom-openai.provider.yml
+curl -o example.ollama.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/examples/configs/ollama-llama318b.provider.yml
+curl -o example.bedrock.provider.yml https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/examples/configs/bedrock.provider.yml
 ```
 
 4. Fill in the required API keys in `.env` file.
@@ -861,7 +861,7 @@ perl -i -pe 's/\s+#.*$//' .env
 7. Run the PentAGI stack:
 
 ```bash
-curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/master/docker-compose.yml
+curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/docker-compose.yml
 docker compose up -d
 ```
 
@@ -2749,7 +2749,7 @@ LANGFUSE_SECRET_KEY= # default: value from ${LANGFUSE_INIT_PROJECT_SECRET_KEY}
 3. Run the Langfuse stack:
 
 ```bash
-curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/master/docker-compose-langfuse.yml
+curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/docker-compose-langfuse.yml
 docker compose -f docker-compose.yml -f docker-compose-langfuse.yml up -d
 ```
 
@@ -2771,7 +2771,7 @@ OTEL_HOST=otelcol:8148
 2. Run the observability stack:
 
 ```bash
-curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/master/docker-compose-observability.yml
+curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/docker-compose-observability.yml
 docker compose -f docker-compose.yml -f docker-compose-observability.yml up -d
 ```
 
@@ -2838,10 +2838,10 @@ NEO4J_URI=bolt://neo4j:7687
 Download the optional compose file and the Neo4j settings with the APOC plugin Graphiti needs when installing manually, then start both stacks:
 
 ```bash
-curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/master/docker-compose-graphiti.yml
+curl -O https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/docker-compose-graphiti.yml
 mkdir -p neo4j/conf neo4j/plugins
 for f in conf/neo4j.conf conf/apoc.conf plugins/apoc-5.26.19-core.jar; do
-  curl -fsSL -o "neo4j/$f" "https://raw.githubusercontent.com/vxcontrol/pentagi/master/examples/neo4j/$f"
+  curl -fsSL -o "neo4j/$f" "https://raw.githubusercontent.com/vxcontrol/pentagi/b611fbebcf55b6deb88ad1fb7bf1f1ce7a357242/examples/neo4j/$f"
 done
 docker compose -f docker-compose.yml -f docker-compose-graphiti.yml up -d
 ```
