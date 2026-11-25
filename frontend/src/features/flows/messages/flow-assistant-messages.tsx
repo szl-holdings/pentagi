@@ -158,7 +158,7 @@ function AssistantsDropdown({
             >
                 <PopoverTrigger asChild>
                     <Button
-                        aria-label="Select assistant"
+                        aria-label={selectedAssistant ? `Select assistant ${selectedAssistantIndex + 1}` : 'Select assistant New'}
                         className="px-2"
                         disabled={isAssistantCreating}
                         variant="outline"
