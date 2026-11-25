@@ -206,8 +206,7 @@ export const MarkdownEditorToolbar = memo(function MarkdownEditorToolbar({
                 editor.getAttributes('tableCell').align ??
                 null) as ColumnAlign | null,
             headingLevel: (HEADING_LEVELS.find((level) => editor.isActive('heading', { level })) ?? 0) as
-                | 0
-                | HeadingLevel,
+                0 | HeadingLevel,
             isBlockquote: isBlockApplied(editor, 'blockquote'),
             isBold: editor.isActive('bold'),
             isCode: editor.isActive('code'),
