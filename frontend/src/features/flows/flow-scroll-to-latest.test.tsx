@@ -94,7 +94,7 @@ describe('assistant list', () => {
         const user = userEvent.setup({ delay: null });
         renderWithFlow(assistantFlowState, <FlowAssistantMessages />);
 
-        await user.click(screen.getByRole('button', { name: 'Select assistant' }));
+        await user.click(screen.getByRole('button', { name: 'Select assistant 1' }));
 
         expect(await screen.findByRole('button', { name: 'Delete Recon assistant' })).toBeInTheDocument();
     });

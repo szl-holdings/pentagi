@@ -19,7 +19,6 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	otellog "go.opentelemetry.io/otel/log"
-	"go.opentelemetry.io/otel/log/global"
 	otelloggernoop "go.opentelemetry.io/otel/log/noop"
 	otelmetric "go.opentelemetry.io/otel/metric"
 	otelmetricnoop "go.opentelemetry.io/otel/metric/noop"
@@ -168,7 +167,7 @@ func InitObserver(ctx context.Context, lfclient LangfuseClient, otelclient Telem
 
 	if otelclient != nil {
 		provider := otelclient.Logger()
-		global.SetLoggerProvider(provider)
+		otel.SetLoggerProvider(provider)
 		obs.logger = provider.Logger(tname, otellog.WithInstrumentationVersion(tversion))
 	} else {
 		obs.logger = otelloggernoop.NewLoggerProvider().Logger(tname)

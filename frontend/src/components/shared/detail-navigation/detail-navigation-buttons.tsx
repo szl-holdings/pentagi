@@ -61,7 +61,7 @@ export function DetailNavigationButtons<T extends { id: string }>({
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button
-                        aria-label={`Open ${lowerTitle} list (${controller.positionLabel})`}
+                        aria-label={`Open ${lowerTitle} list, position ${controller.positionLabel}`}
                         className={cn(
                             middleHeight,
                             'min-w-12 rounded-none border-x px-2 font-mono text-xs tabular-nums',

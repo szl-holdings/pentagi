@@ -6,8 +6,7 @@ import { assistantsCassette, CREATED_ASSISTANT, RUNNING_ASSISTANT, WAITING_ASSIS
 const transcript = (world: MockWorld, assistantId: string): undefined | unknown[] =>
     (
         world.matchGraphQL('assistantLogs', { assistantId, flowId: '5' })?.data as
-            | undefined
-            | { assistantLogs: unknown[] }
+            undefined | { assistantLogs: unknown[] }
     )?.assistantLogs;
 
 describe('assistants cassette — assistantLogs', () => {

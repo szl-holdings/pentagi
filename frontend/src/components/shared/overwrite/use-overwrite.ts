@@ -15,9 +15,7 @@ import type { OverwriteConflict } from './overwrite-dialog';
  * the dialog still opens with the count-based copy.
  */
 export type OverwriteOutcome =
-    | { conflicts?: OverwriteConflict[]; kind: 'conflict' }
-    | { kind: 'error' }
-    | { kind: 'ok' };
+    { conflicts?: OverwriteConflict[]; kind: 'conflict' } | { kind: 'error' } | { kind: 'ok' };
 
 /**
  * Anonymous fallback descriptor used when a 409 sneaks through after a clean

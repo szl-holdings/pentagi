@@ -379,7 +379,7 @@ const withoutTemplateRows = (src: string): string => {
 
     const columns = countRowCells(row);
 
-    for (let at = delimiter + 1; at < src.length; ) {
+    for (let at = delimiter + 1; at < src.length;) {
         const end = src.indexOf('\n', at);
         const line = src.slice(at, end < 0 ? src.length : end);
 
@@ -849,7 +849,7 @@ export const escapeCellPipes = (text: string): string => {
     let result = '';
     let cursor = 0;
 
-    for (let at = 0; at < text.length; ) {
+    for (let at = 0; at < text.length;) {
         if (action && action.index < at) {
             actions.lastIndex = at;
             action = actions.exec(text);
