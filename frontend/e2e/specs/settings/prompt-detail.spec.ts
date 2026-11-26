@@ -7,6 +7,7 @@ import { PromptValidationErrorType, ResultType } from '@/graphql/types';
 
 import { expect, test } from '../../fixtures/test.ts';
 import { expectCleanPage } from '../../helpers/errors.ts';
+import { entity } from '../../mocks/cassette.ts';
 import {
     PROMPT_DETAIL_AGENT,
     PROMPT_OVERRIDE,
@@ -130,7 +131,16 @@ test.describe('settings prompt validation', { tag: '@coverage' }, () => {
 
     test.describe('a template the server accepts', () => {
         const accepted: ResultOf<typeof ValidatePromptDocument> = {
-            validatePrompt: { details: null, errorType: null, line: null, message: null, result: ResultType.Success },
+            // entity() adds the __typename Apollo cache normalization needs (see cassette.ts):
+            // without it the client resolves validatePrompt as an empty object and the dialog
+            // renders the error branch with no message, details, or line.
+            validatePrompt: entity('PromptValidationResult', {
+                details: null,
+                errorType: null,
+                line: null,
+                message: null,
+                result: ResultType.Success,
+            }),
         };
 
         test.use({ cassette: promptDetailCassette({ mutations: { validatePrompt: [{ data: accepted }] } }) });
@@ -156,13 +166,13 @@ test.describe('settings prompt validation', { tag: '@coverage' }, () => {
     test.describe('a template the server rejects', () => {
         // What validator.ValidatePrompt answers for an action left open on line 3.
         const rejected: ResultOf<typeof ValidatePromptDocument> = {
-            validatePrompt: {
+            validatePrompt: entity('PromptValidationResult', {
                 details: 'Template appears to be incomplete - missing closing braces',
                 errorType: PromptValidationErrorType.SyntaxError,
                 line: 4,
                 message: 'failed to parse template: template: validation:4: unclosed action started at validation:3',
                 result: ResultType.Error,
-            },
+            }),
         };
 
         test.use({ cassette: promptDetailCassette({ mutations: { validatePrompt: [{ data: rejected }] } }) });
